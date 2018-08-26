@@ -1,0 +1,8 @@
+- name: otc_auth
+  scm: git
+  src: https://github.com/eumel8/otc_auth.git
+  version: master
+- name: otc_ims
+  scm: git
+  src: https://github.com/eumel8/otc_ims.git
+  version: master
