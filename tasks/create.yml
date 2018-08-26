@@ -20,3 +20,22 @@
 - debug:
     msg: "{{ image_create }}"
   when: image_create is defined
+
+- name: Request job status from API (waiting for SUCCESS)
+  uri:
+    url: "{{ AUTH_URL_ECS_CLOUD }}/{{ PROJECT_ID }}/jobs/{{ image_create.json.job_id }}"
+    method: GET
+    return_content: yes
+    follow_redirects: "{{ uri_follow_redirects }}"
+    validate_certs: "{{ uri_validate_certs }}"
+    headers:
+      Content-Type: "application/json"
+      X-Auth-Token: "{{ token['x_subject_token'] }}"
+  register: jobstatus
+  retries: 100
+  delay: 5
+  until: jobstatus.json.status == 'SUCCESS'
+  changed_when: false
+  when:
+    - image_create is defined
+    - waitfor | bool
