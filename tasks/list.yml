@@ -11,7 +11,7 @@
   register: imageslist
   retries: "{{ uri_retries }}"
   delay: "{{ uri_delay }}"
-  until: imagelist.status == 200
+  until: imageslist.status == 200
   changed_when: false
 
 - debug:
