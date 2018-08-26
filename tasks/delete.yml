@@ -11,11 +11,13 @@
     headers:
       Content-Type: "application/json"
       X-Auth-Token: "{{ token['x_subject_token'] }}"
+    status_code: 200,201,202,203,204
   register: image_delete
   retries: "{{ uri_retries }}"
   delay: "{{ uri_delay }}"
-  until: image_delete.status == 200
+  until: image_delete.status == 204
   changed_when: false
+  when: image_id is defined and image_id|length != 0
 
 - debug:
     msg: "{{ image_delete }}"
