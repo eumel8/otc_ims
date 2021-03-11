@@ -19,5 +19,6 @@
   changed_when: false
   when: image_id is defined and image_id|length != 0
 
-- debug:
+- name: image_delete
+  debug:
     msg: "{{ image_delete }}"

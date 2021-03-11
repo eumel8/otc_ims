@@ -19,5 +19,6 @@
   when:
     - image_id is defined
 
-- debug:
+- name: imagedetail
+  debug:
     msg: "{{ imagedetail.json }}"

@@ -14,5 +14,6 @@
   until: imageslist.status == 200
   changed_when: false
 
-- debug:
+- name: imageslist
+  debug:
     msg: "{{ imageslist.json }}"

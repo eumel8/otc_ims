@@ -17,7 +17,8 @@
   changed_when: false
   when: image_name is defined
 
-- debug:
+- name: image_create
+  debug:
     msg: "{{ image_create }}"
   when: image_create is defined
 
