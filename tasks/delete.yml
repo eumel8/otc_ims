@@ -5,7 +5,7 @@
   uri:
     url: "{{ AUTH_URL_IMS }}/v2/images/{{ image_id }}"
     method: DELETE
-    return_content: yes
+    return_content: true
     follow_redirects: "{{ uri_follow_redirects }}"
     validate_certs: "{{ uri_validate_certs }}"
     headers:
@@ -19,5 +19,6 @@
   changed_when: false
   when: image_id is defined and image_id|length != 0
 
-- debug:
+- name: image_delete
+  debug:
     msg: "{{ image_delete }}"
